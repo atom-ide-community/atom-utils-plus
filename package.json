@@ -17,6 +17,12 @@
     "url": "https://github.com/atom-ide-community/atom-utils-plus/issues"
   },
   "homepage": "https://github.com/atom-ide-community/atom-utils-plus",
+  "scripts": {
+    "lint": "coffeelint src/*.coffee spec/*.coffee",
+    "test": "jasmine-focused --coffee --forceexit --captureExceptions spec",
+    "clean": "shx rm -rf lib",
+    "build": "npm run clean && shx cp -r src lib && coffee -c -M -o lib lib && shx rm -rf lib/*.coffee lib/**/*.coffee",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "mixto": "^1",
@@ -24,12 +30,17 @@
   },
   "devDependencies": {
     "jasmine-focused": "1.x",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-cli": "~0.1.8",
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-shell": "~0.2.2",
-    "grunt-coffeelint": "0.0.6",
-    "promise": "*"
+    "coffeelint": "^2.1.0",
+    "promise": "*",
+    "coffeescript": "^1.12.7",
+    "shx": "^0.3.2"
+  },
+  "coffeelintConfig": {
+    "no_empty_param_list": {
+      "level": "error"
+    },
+    "max_line_length": {
+      "level": "ignore"
+    }
   }
 }
