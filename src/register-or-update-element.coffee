@@ -1,10 +1,10 @@
 {deprecate} = require 'grim'
 
-if window.__CUSTOM_HTML_ELEMENTS_CLASSES__?
-  window.__ATOM_UTILS_CUSTOM_ELEMENT_CLASSES__ = window.__CUSTOM_HTML_ELEMENTS_CLASSES__
-  delete window.__CUSTOM_HTML_ELEMENTS_CLASSES__
+if global.__CUSTOM_HTML_ELEMENTS_CLASSES__?
+  global.__ATOM_UTILS_CUSTOM_ELEMENT_CLASSES__ = global.__CUSTOM_HTML_ELEMENTS_CLASSES__
+  delete global.__CUSTOM_HTML_ELEMENTS_CLASSES__
 else
-  window.__ATOM_UTILS_CUSTOM_ELEMENT_CLASSES__ ?= {}
+  global.__ATOM_UTILS_CUSTOM_ELEMENT_CLASSES__ ?= {}
 
 callbackProperties = [
   'createdCallback'

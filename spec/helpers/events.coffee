@@ -3,7 +3,7 @@ mouseEvent = (type, properties={}) ->
   defaults = {
     bubbles: true
     cancelable: (type isnt "mousemove")
-    view: window
+    view: global
     detail: 0
     pageX: 0
     pageY: 0
