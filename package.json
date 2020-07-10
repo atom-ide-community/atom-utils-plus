@@ -32,6 +32,8 @@
     "grim": "^2"
   },
   "devDependencies": {
+    "@types/atom": "^1.40.4",
+    "@types/mixto": "^0.0.30",
     "coffeelint": "^2.1.0",
     "promise": "*",
     "coffeescript": "^1.12.7",
