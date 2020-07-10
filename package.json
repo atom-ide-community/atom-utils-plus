@@ -19,7 +19,7 @@
   "homepage": "https://github.com/atom-ide-community/atom-utils-plus",
   "scripts": {
     "lint": "coffeelint src/*.coffee spec/*.coffee",
-    "test": "jasmine-focused --coffee --forceexit --captureExceptions spec",
+    "test": "atom --test spec",
     "clean": "shx rm -rf lib",
     "build": "npm run clean && shx cp -r src lib && coffee -c -M -o lib lib && shx rm -rf lib/*.coffee lib/**/*.coffee",
     "prepare": "npm run build"
@@ -29,7 +29,6 @@
     "grim": "^2"
   },
   "devDependencies": {
-    "jasmine-focused": "1.x",
     "coffeelint": "^2.1.0",
     "promise": "*",
     "coffeescript": "^1.12.7",
