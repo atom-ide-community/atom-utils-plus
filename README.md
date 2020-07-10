@@ -1,6 +1,6 @@
-## atom-utils
+## atom-utils-plus
 
-[![Build Status](https://travis-ci.org/abe33/atom-utils.svg?branch=master)](https://travis-ci.org/abe33/atom-utils)
+![CI](https://github.com/atom-ide-community/atom-utils-plus/workflows/CI/badge.svg)
 
 A bunch of general purpose utilities for Atom packages.
 
