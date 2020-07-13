@@ -1,4 +1,4 @@
-{EventsDelegation, registerOrUpdateElement} = require '../../src/atom-utils'
+{EventsDelegation, registerOrUpdateElement} = require '../../lib/atom-utils'
 {click} = require '../helpers/events'
 
 

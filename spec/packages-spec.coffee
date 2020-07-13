@@ -1,5 +1,5 @@
 require './spec-helper'
-{requirePackages} = require '../src/atom-utils'
+{requirePackages} = require '../lib/atom-utils'
 
 describe 'requirePackages', ->
   mockPackageManager()

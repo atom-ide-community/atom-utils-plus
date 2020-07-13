@@ -1,4 +1,4 @@
-{SpacePenDSL, registerOrUpdateElement} = require '../../src/atom-utils'
+{SpacePenDSL, registerOrUpdateElement} = require '../../lib/atom-utils'
 
 describe 'space-pen DSL', ->
   [element, DummyElement] = []

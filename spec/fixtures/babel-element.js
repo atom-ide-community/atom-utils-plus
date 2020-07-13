@@ -1,6 +1,6 @@
 'use babel'
 
-import SpacePenDSL from '../../src/mixins/space-pen-dsl'
+import {SpacePenDSL} from '../../lib/atom-utils'
 
 export default class DummyElement extends HTMLElement {
   static content () {

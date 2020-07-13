@@ -1,4 +1,4 @@
-{registerOrUpdateElement, Ancestors} = require '../../src/atom-utils'
+{registerOrUpdateElement, Ancestors} = require '../../lib/atom-utils'
 
 describe 'Ancestors mixin', ->
   [element, jasmineContent, DummyElement] = []

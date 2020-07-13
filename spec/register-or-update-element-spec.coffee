@@ -1,4 +1,4 @@
-registerOrUpdateElement = require '../src/register-or-update-element'
+{registerOrUpdateElement} = require '../lib/atom-utils'
 
 describe 'registerOrUpdateElement', ->
   it 'registers a custom elements when it has not been registered yet', ->
