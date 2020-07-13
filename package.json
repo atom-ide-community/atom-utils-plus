@@ -34,7 +34,7 @@
   "devDependencies": {
     "coffeelint": "^2.1.0",
     "promise": "*",
-    "coffeescript": ">2.0.0",
+    "coffeescript": "^1.12.7",
     "rollup": "^2.21.0",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
