@@ -1,14 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
-let SpacePenDSL;
-const Mixin = require('mixto');
+import Mixin from 'mixto';
 
 const Tags =
   `a abbr address article aside audio b bdi bdo blockquote body button canvas \
@@ -35,9 +25,7 @@ class BabelSpacePenDSL extends Mixin {
   }
 }
 
-module.exports =
-(SpacePenDSL = (function() {
-  SpacePenDSL = class SpacePenDSL extends Mixin {
+export default class SpacePenDSL extends Mixin {
     static initClass() {
       this.Babel = BabelSpacePenDSL;
     }
@@ -48,28 +36,24 @@ module.exports =
       Object.defineProperty(klass, 'content', {
         enumerable: false,
         get() { return this.prototype.__content__; },
-        set(value) { return this.prototype.__content__ = value; }
-      }
-      );
+        set(value) { this.prototype.__content__ = value; }
+      });
 
       Object.defineProperty(klass.prototype, 'createdCallback', {
         enumerable: true,
         get() { return this.__create__; },
-        set(value) { return this.__createdCallback__ = value; }
-      }
-      );
+        set(value) { this.__createdCallback__ = value; }
+      });
 
       Object.defineProperty(klass.prototype, '__create__', {
         enumerable: true,
         value() {
           if (this.__content__ != null) { SpacePenDSL.buildContent(this, this.__content__); }
-
           if (this.__createdCallback__ != null) { return (this.__createdCallback__)(); }
         }
-      }
-      );
+      });
 
-      return klass.useShadowRoot = () => klass.prototype.__useShadowRoot__ = true;
+      klass.useShadowRoot = () => klass.prototype.__useShadowRoot__ = true;
     }
 
     static buildContent(element, content) {
@@ -77,12 +61,12 @@ module.exports =
 
       content.call(template);
 
-      const [html] = Array.from(template.buildHtml());
-      var root =
-      element.__useShadowRoot__ ?
-        (root = (element.shadowRoot = element.createShadowRoot()))
-      :
-        (root = element);
+      const [html] = template.buildHtml();
+      let root
+      if (element.__useShadowRoot__)
+        root = (element.shadowRoot = element.createShadowRoot())
+      else
+        root = element
       root.innerHTML = html;
 
       return this.wireOutlets(element, root);
@@ -97,15 +81,17 @@ module.exports =
 
       return undefined;
     }
-  };
-  SpacePenDSL.initClass();
-  return SpacePenDSL;
-})());
+}
+
+SpacePenDSL.initClass();
 
 class Template {
   static initClass() {
-  
-    Tags.forEach(tagName => Template.prototype[tagName] = function(...args) { return this.currentBuilder.tag(tagName, ...Array.from(args)); });
+    Tags.forEach((tagName) => {
+      Template.prototype[tagName] = (...args) => {
+        return this.currentBuilder.tag(tagName, ...args);
+      }
+    });
   }
   constructor() { this.currentBuilder = new Builder; }
 
@@ -113,12 +99,13 @@ class Template {
 
   text(string) { return this.currentBuilder.text(string); }
 
-  tag(tagName, ...args) { return this.currentBuilder.tag(tagName, ...Array.from(args)); }
+  tag(tagName, ...args) { return this.currentBuilder.tag(tagName, ...args); }
 
   raw(string) { return this.currentBuilder.raw(string); }
 
   buildHtml() { return this.currentBuilder.buildHtml(); }
 }
+
 Template.initClass();
 
 class Builder {
@@ -141,11 +128,9 @@ class Builder {
         throw new Error(`Self-closing tag ${name} cannot have text or content`);
       }
     } else {
-      if (typeof options.content === 'function') {
-        options.content();
-      }
+      options.content?.();
       if (options.text) { this.text(options.text); }
-      return this.closeTag(name);
+      this.closeTag(name);
     }
   }
 
@@ -170,11 +155,11 @@ class Builder {
       :
         "";
 
-    return this.document.push(`<${name}${attributesString}>`);
+    this.document.push(`<${name}${attributesString}>`);
   }
 
   closeTag(name) {
-    return this.document.push(`</${name}>`);
+    this.document.push(`</${name}>`);
   }
 
   text(string) {
@@ -185,17 +170,17 @@ class Builder {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
-    return this.document.push(escapedString);
+    this.document.push(escapedString);
   }
 
   raw(string) {
-    return this.document.push(string);
+    this.document.push(string);
   }
 
   subview(outletName, subview) {
     const subviewId = `subview-${++idCounter}`;
     this.tag('div', {id: subviewId});
-    return this.postProcessingSteps.push(function(view) {
+    this.postProcessingSteps.push((view) => {
       view[outletName] = subview;
       subview.parentView = view;
       return view.find(`div#${subviewId}`).replaceWith(subview);
