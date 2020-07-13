@@ -23,8 +23,7 @@ class BabelSpacePenDSL extends Mixin
   buildContent: ->
     SpacePenDSL.buildContent(this, @constructor.content) if @constructor.content?
 
-module.exports =
-class SpacePenDSL extends Mixin
+export default class SpacePenDSL extends Mixin
   @Babel: BabelSpacePenDSL
 
   @includeInto: (klass) ->
