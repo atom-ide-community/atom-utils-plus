@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "mixto": "^1",
-    "grim": "^2"
+    "grim": "^2.0.3"
   },
   "devDependencies": {
     "coffeelint": "^2.1.0",
