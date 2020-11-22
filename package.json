@@ -3,6 +3,10 @@
   "version": "0.9.2",
   "description": "A bunch of general purpose utilities for Atom packages",
   "main": "lib/atom-utils.js",
+  "files": [
+    "src",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/atom-ide-community/atom-utils-plus.git"
