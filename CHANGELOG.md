@@ -1,3 +1,19 @@
+# [0.11.0](https://github.com/atom-ide-community/atom-utils-plus/compare/v0.10.0...v0.11.0) (2020-11-22)
+
+### Features
+
+* Add possibility to pass options to addEventListener ([b33dee9](https://github.com/atom-ide-community/atom-utils-plus/commit/b33dee922e98f0ed5bf2a15e990fb87fd4b979a6))
+
+
+# [0.10.0](https://github.com/atom-ide-community/atom-utils-plus/compare/v0.9.2...v0.10.0) (2020-07-10)
+
+### Bug Fixes
+
+* use global instead of window ([d43e3d0](https://github.com/atom-ide-community/atom-utils-plus/commit/d43e3d098a62204175e003837ca1afd4a453ccdb))
+* register atom-utils-plus ([9dfe842](https://github.com/atom-ide-community/atom-utils-plus/commit/9dfe842f2ca8c44b17f347662386d8ae8808eefe))
+* Update README.md ([46e89e4](https://github.com/atom-ide-community/atom-utils-plus/commit/46e89e4f7170800e4a2da97f565952b4addcd632))
+* use scripts instead of grunt ([bc0cc85](https://github.com/atom-ide-community/atom-utils-plus/commit/bc0cc85bdc8dede92a5dbebcf92c63e052de1cc2))
+
 <a name="v0.9.2"></a>
 # v0.9.2 (2015-12-11)
 
