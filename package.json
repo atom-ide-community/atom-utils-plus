@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/atom-ide-community/atom-utils-plus",
   "scripts": {
-    "lint": "coffeelint src/*.coffee spec/*.coffee",
+    "test.lint": "coffeelint src/*.coffee spec/*.coffee",
     "test": "atom --test spec",
     "clean": "shx rm -rf lib",
     "build": "npm run clean && shx cp -r src lib && coffee -c -M -o lib lib && shx rm -rf lib/*.coffee lib/**/*.coffee",
